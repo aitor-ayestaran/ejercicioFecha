@@ -12,7 +12,7 @@ namespace ejercicioFecha
         private int mes;
         private int dia;
 
-        private const int MESES_AÑO = 12;
+        public const int MESES_AÑO = 12;
 
         public static bool EsBisiesto(int año)
         {
@@ -96,7 +96,7 @@ namespace ejercicioFecha
         public void SetDia(int dia)
         {
             int diasMes;
-            if (año >= 0 && mes > 0 && mes < MESES_AÑO)
+            if (año >= 0 && mes > 0 && mes <= MESES_AÑO)
             { 
                 switch(mes)
                 {

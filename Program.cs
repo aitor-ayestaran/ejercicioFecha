@@ -4,7 +4,7 @@ namespace ejercicioFecha
 {
     class Program
     {
-        static void Main(string[] args)
+        static void Mainn(string[] args)
         {
             var f = new Fecha();
             f.Set(2020, 2, 29);
