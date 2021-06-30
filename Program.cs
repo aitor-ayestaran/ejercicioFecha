@@ -7,7 +7,7 @@ namespace ejercicioFecha
         static void Main(string[] args)
         {
             var f = new Fecha();
-            f.set(2020, 2, 29);
+            f.Set(2020, 2, 29);
             var f2 = new Fecha(2020, 2, 29);
 
             Console.WriteLine(f.Equals(f2));

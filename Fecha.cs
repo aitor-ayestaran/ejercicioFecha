@@ -14,7 +14,7 @@ namespace ejercicioFecha
 
         private const int MESES_AÑO = 12;
 
-        public static bool esBisiesto(int año)
+        public static bool EsBisiesto(int año)
         {
             if(año % 4 != 0 || (año % 100 == 0 && año % 400 != 0))
             {
@@ -30,29 +30,29 @@ namespace ejercicioFecha
 
         public Fecha(int año, int mes, int dia) {
 
-            setAño(año);
-            setMes(mes);
-            setDia(dia);
+            SetAño(año);
+            SetMes(mes);
+            SetDia(dia);
         }
         public Fecha(DateTime date)
         {
-            setAño(date.Year);
-            setMes(date.Month);
-            setDia(date.Day);
+            SetAño(date.Year);
+            SetMes(date.Month);
+            SetDia(date.Day);
         }
 
         public Fecha(Fecha f) {
-            setAño(f.año);
-            setMes(f.mes);
-            setDia(f.dia);
+            SetAño(f.año);
+            SetMes(f.mes);
+            SetDia(f.dia);
         }
 
-        public bool esBisiesto()
+        public bool EsBisiesto()
         {
-            return esBisiesto(año);           
+            return EsBisiesto(año);           
         }
 
-        public void setAño(int año)
+        public void SetAño(int año)
         {
             if (año >= 0 && año < 3001)
             {
@@ -64,12 +64,12 @@ namespace ejercicioFecha
             }
         }
 
-        public int getAño()
+        public int GetAño()
         {
             return año;
         }
 
-        public void setMes(int mes)
+        public void SetMes(int mes)
         {
             if(año >= 0)
             {
@@ -88,12 +88,12 @@ namespace ejercicioFecha
             }
         }
 
-        public int getMes()
+        public int GetMes()
         {
             return mes;
         }
 
-        public void setDia(int dia)
+        public void SetDia(int dia)
         {
             int diasMes;
             if (año >= 0 && mes > 0 && mes < MESES_AÑO)
@@ -107,7 +107,7 @@ namespace ejercicioFecha
                         diasMes = 30; 
                         break;
                     case 2:
-                        if (esBisiesto(año))
+                        if (EsBisiesto(año))
                         {
                             diasMes = 29;
                         }
@@ -136,23 +136,23 @@ namespace ejercicioFecha
             }
         }
 
-        public int getDia()
+        public int GetDia()
         {
             return dia;
         }
 
-        public void set(int año, int mes, int dia)
+        public void Set(int año, int mes, int dia)
         {
-            setAño(año);
-            setMes(mes);
-            setDia(dia);
+            SetAño(año);
+            SetMes(mes);
+            SetDia(dia);
         }
 
-        public void set(Fecha f)
+        public void Set(Fecha f)
         {
-            setAño(f.año);
-            setMes(f.mes);
-            setDia(f.dia);
+            SetAño(f.año);
+            SetMes(f.mes);
+            SetDia(f.dia);
         }
 
         public override string ToString()
@@ -166,13 +166,13 @@ namespace ejercicioFecha
             {
                 return true;
             }
-            Fecha f = obj as Fecha;
-            if(f is null)
+            if (obj is not Fecha f)
             {
                 return false;
             }
             return dia == f.dia && mes == f.mes && año == f.año;
         }
+        public override int GetHashCode() { return base.GetHashCode(); }
 
     }
 
