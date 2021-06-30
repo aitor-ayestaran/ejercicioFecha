@@ -18,20 +18,20 @@ namespace ejercicioFecha
 
         public static void Main()
         {
-            int año;
+            int anho;
             int mes;
             int dia;
             
             for (int i = 0; i < MAX_FECHAS; i++)
             {
-                año = GetRandom(1, 3001);
+                anho = GetRandom(1, 3001);
                 mes = GetRandom(1, 13);
                 dia = GetRandom(1, 32);
 
-                Console.WriteLine($"\n Fecha {i}: {dia} / {mes} / {año}");
+                Console.WriteLine($"\n Fecha {i}: {dia} / {mes} / {anho}");
                 try
                     {
-                        Fecha f = new Fecha(año, mes, dia);
+                        Fecha f = new Fecha(anho, mes, dia);
                         Console.WriteLine("Fecha correcta: " + f);
                     }
                 catch (Exception e)
