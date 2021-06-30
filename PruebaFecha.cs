@@ -8,7 +8,7 @@ namespace ejercicioFecha
 {
     public class PruebaFecha
     {
-        public static int MAX_FECHAS = 100;
+        public static int MAX_FECHAS = 1000;
         public static int GetRandom(int min, int max)
         {
             var aleatorio = new Random();
@@ -16,7 +16,7 @@ namespace ejercicioFecha
             
         }
 
-        public static void Main(String[] args)
+        public static void Main()
         {
             int año;
             int mes;
@@ -24,11 +24,11 @@ namespace ejercicioFecha
             
             for (int i = 0; i < MAX_FECHAS; i++)
             {
-                año = GetRandom(1, 2021);
+                año = GetRandom(1, 3001);
                 mes = GetRandom(1, 13);
-                dia = GetRandom(1, 31);
+                dia = GetRandom(1, 32);
 
-                Console.WriteLine($"{año} / {mes} / {dia}");
+                Console.WriteLine($"\n Fecha {i}: {dia} / {mes} / {año}");
                 try
                     {
                         Fecha f = new Fecha(año, mes, dia);
@@ -36,11 +36,13 @@ namespace ejercicioFecha
                     }
                 catch (Exception e)
                     {
-                        Console.WriteLine("EXCEPTION: " + e.Message);
-                    }
+                    Console.ForegroundColor = ConsoleColor.Red;
+                    Console.WriteLine("EXCEPTION: " + e.Message);
+                    Console.ForegroundColor = ConsoleColor.White;
+                }
             }
-            var ff = new Fecha(2000,2,44);
-            Console.WriteLine(ff);
+            //var ff = new Fecha(2000,2,44);
+            //Console.WriteLine(ff);
         }
     }
 }
