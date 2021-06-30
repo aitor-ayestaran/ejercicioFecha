@@ -8,15 +8,15 @@ namespace ejercicioFecha
 {
     public class Fecha
     {
-        private int año = -1;
+        private int anho = -1;
         private int mes;
         private int dia;
 
-        public const int MESES_AÑO = 12;
+        public const int MESES_ANHO = 12;
 
-        public static bool EsBisiesto(int año)
+        public static bool EsBisiesto(int anho)
         {
-            if(año % 4 != 0 || (año % 100 == 0 && año % 400 != 0))
+            if(anho % 4 != 0 || (anho % 100 == 0 && anho % 400 != 0))
             {
                 return false;
             }
@@ -28,52 +28,52 @@ namespace ejercicioFecha
 
         public Fecha() { }
 
-        public Fecha(int año, int mes, int dia) {
+        public Fecha(int anho, int mes, int dia) {
 
-            SetAño(año);
+            SetAnho(anho);
             SetMes(mes);
             SetDia(dia);
         }
         public Fecha(DateTime date)
         {
-            SetAño(date.Year);
+            SetAnho(date.Year);
             SetMes(date.Month);
             SetDia(date.Day);
         }
 
         public Fecha(Fecha f) {
-            SetAño(f.año);
+            SetAnho(f.anho);
             SetMes(f.mes);
             SetDia(f.dia);
         }
 
         public bool EsBisiesto()
         {
-            return EsBisiesto(año);           
+            return EsBisiesto(anho);           
         }
 
-        public void SetAño(int año)
+        public void SetAnho(int anho)
         {
-            if (año >= 0 && año < 3001)
+            if (anho >= 0 && anho < 3001)
             {
-                this.año = año;
+                this.anho = anho;
             }
             else
             {
-                throw new FechaException("El año debe estar en el rango 0-3000.");
+                throw new FechaException("El anho debe estar en el rango 0-3000.");
             }
         }
 
-        public int GetAño()
+        public int GetAnho()
         {
-            return año;
+            return anho;
         }
 
         public void SetMes(int mes)
         {
-            if(año >= 0)
+            if(anho >= 0)
             {
-                if(mes > 0 && mes <= MESES_AÑO)
+                if(mes > 0 && mes <= MESES_ANHO)
                 {
                     this.mes = mes;
                 }
@@ -84,7 +84,7 @@ namespace ejercicioFecha
             }
             else
             {
-                throw new FechaException("El año debe estar definidido para definir el mes.");
+                throw new FechaException("El anho debe estar definidido para definir el mes.");
             }
         }
 
@@ -96,7 +96,7 @@ namespace ejercicioFecha
         public void SetDia(int dia)
         {
             int diasMes;
-            if (año >= 0 && mes > 0 && mes <= MESES_AÑO)
+            if (anho >= 0 && mes > 0 && mes <= MESES_ANHO)
             { 
                 switch(mes)
                 {
@@ -107,7 +107,7 @@ namespace ejercicioFecha
                         diasMes = 30; 
                         break;
                     case 2:
-                        if (EsBisiesto(año))
+                        if (EsBisiesto(anho))
                         {
                             diasMes = 29;
                         }
@@ -131,7 +131,7 @@ namespace ejercicioFecha
             }
             else
             {
-                throw new FechaException("El año y el mes deben estar definididos para definir el día.");
+                throw new FechaException("El anho y el mes deben estar definididos para definir el día.");
 
             }
         }
@@ -141,23 +141,23 @@ namespace ejercicioFecha
             return dia;
         }
 
-        public void Set(int año, int mes, int dia)
+        public void Set(int anho, int mes, int dia)
         {
-            SetAño(año);
+            SetAnho(anho);
             SetMes(mes);
             SetDia(dia);
         }
 
         public void Set(Fecha f)
         {
-            SetAño(f.año);
+            SetAnho(f.anho);
             SetMes(f.mes);
             SetDia(f.dia);
         }
 
         public override string ToString()
         {
-            return $"{dia} / {mes} / {año}";
+            return $"{dia} / {mes} / {anho}";
         }
 
         public override bool Equals(object obj)
@@ -170,11 +170,15 @@ namespace ejercicioFecha
             {
                 return false;
             }
-            return dia == f.dia && mes == f.mes && año == f.año;
+            return dia == f.dia && mes == f.mes && anho == f.anho;
         }
-        public override int GetHashCode() { return base.GetHashCode(); }
+        public override int GetHashCode() {
+            return anho.GetHashCode() ^ mes.GetHashCode() ^ dia.GetHashCode();
+
+            //return base.GetHashCode();
+        }
 
     }
 
-}
+    }
 
